@@ -33,12 +33,13 @@ This project implements a disease prediction system using a Keras-based neural n
 | `Model Trainer (Both naive bayes and keras).py` |Training script for Naive Bayes + Keras                                 |
 | `trained_nn_model.keras`                        | Saved Keras neural network model                                       |
 | `evaluate_nn_model.py`                          | Evaluation script with metrics, confusion matrix, and plots            |
-| `labelencoder.pkl`                              | scikit-learn LabelEncoder mapping disease names to class indices       |
+| `label_encoder.pkl`                              | scikit-learn LabelEncoder mapping disease names to class indices       |
 | `label_list.pkl`                                | Ordered list of class label names                                      |
 | `master_symptom_list.pkl`                       | Master list of 645 symptom tokens used in training                     |
 | `requirements.txt`                              | Required Python libraries                                              |
 | `confusion_matrix.png`                          | Visual output showing per-class performance of the neural network      |
 | `training_history.pkl`                          | Serialized accuracy/loss per epoch (for plotting)                      |
+| `evaluate_models.py`                          | Evaluates the models for Top 1, Top 3, Top 5 & Top 10 accuracy and plots the confusion matrices                   |
  
 > 📌 **Note**: The dataset (`parsed_data.pkl`) is not included in this repo for size/privacy reasons.
 
