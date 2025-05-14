@@ -1,50 +1,52 @@
-# 🩺 Disease Prediction System (Naive Bayes + Keras Neural Network)
+# 🩺 Disease Prediction System (Keras Neural Network)
 
-This project implements a hybrid disease prediction system that combines a Multinomial Naive Bayes classifier and a Keras-based feedforward neural network to identify the top 3 most probable diseases based on user-supplied symptoms. The system handles free-text input with potential typographical errors and synonyms, and returns ranked predictions from both models with confidence scores.
+This project implements a disease prediction system using a Keras-based neural network trained on a structured binary symptom dataset. The model accepts natural language symptom input, including typos and synonyms, and returns the top 3 most probable diseases with confidence scores. The system includes preprocessing, evaluation, and visualization tools(confusion matrices) to support deployment and research use.
 
 ---
 
 ## 🔍 Key Features
 
-- Accepts natural language symptom input
-- Fuzzy matching and typo handling using sentence embeddings + fallback logic
-- Binary symptom vectorization (645 features)
-- Dual-model prediction (Naive Bayes + Neural Network)
-- Top-3 ranked predictions with class probabilities
-- Robust preprocessing and vector generation
-- Clean CLI-based interaction via `main.py`
+- Natural language symptom input
+- Fuzzy matching and typo tolerance (via sentence-transformers + fallback)
+- Binary vectorization (645 symptoms)
+- Deep learning model using Keras
+- Top-3 ranked disease predictions with softmax probabilities
+- Full evaluation pipeline with metrics and confusion matrices
 
 ---
 
-## 🧠 Models Used
+## 🧠 Model Overview
 
-### 1. **Multinomial Naive Bayes**
-- File: `trained_model.pkl`
-- Format: scikit-learn model
-- Description: Probabilistic classifier trained on binary symptom vectors; interpretable and fast.
-
-### 2. **Feedforward Neural Network (Keras)**
-- File: `trained_nn_model.keras`
-- Format: Keras `.keras` saved model
-- Description: Deep neural network with two hidden layers trained using softmax and categorical crossentropy loss.
+### ✅ Feedforward Neural Network
+- Input size: 645 features (binary symptom indicators)
+- Hidden layers: [512 units + dropout] → [256 units + dropout]
+- Output: 100 softmax disease classes
+- Trained with categorical cross-entropy, Adam optimizer
 
 ---
 
-## 🗃️ Supporting Files and Their Roles
+## 🗃️ Repository Structure & Key Files
 
-| File                                           | Purpose                                                                 |
-|------------------------------------------------|-------------------------------------------------------------------------|
-| `main.py`                                      | The main runtime script. Accepts input and outputs predictions.         |
-| `trained_model.pkl`                            | Trained Naive Bayes model.                                              |
-| `trained_nn_model.keras`                       | Trained Keras neural network model.                                     |
-| `master_symptom_list.pkl`                      | List of 645 unique, tokenized symptoms. Used for vector creation.       |
-| `labelencoder.pkl`                             | Encodes string class labels to integers during training/inference.      |
-| `label_list.pkl`                               | List of original disease names (labels), used to decode predictions.    |
-| `Model Trainer(Both Naive Bayes & Keras)`|     | Trains both models                                                      |
-| `requirements.txt`                             | Python dependencies required to run the project.                        |
+| File                                            | Purpose                                                                |
+|-------------------------------------------------|------------------------------------------------------------------------|
+| `main.py`                                       | CLI script to enter symptoms and get predictions from the trained model|
+| `Model Trainer (Both naive bayes and keras).py` |Training script for Naive Bayes + Keras                                 |
+| `trained_nn_model.keras`                        | Saved Keras neural network model                                       |
+| `evaluate_nn_model.py`                          | Evaluation script with metrics, confusion matrix, and plots            |
+| `labelencoder.pkl`                              | scikit-learn LabelEncoder mapping disease names to class indices       |
+| `label_list.pkl`                                | Ordered list of class label names                                      |
+| `master_symptom_list.pkl`                       | Master list of 645 symptom tokens used in training                     |
+| `requirements.txt`                              | Required Python libraries                                              |
+| `confusion_matrix.png`                          | Visual output showing per-class performance of the neural network      |
+| `training_history.pkl`                          | Serialized accuracy/loss per epoch (for plotting)                      |
+ 
+> 📌 **Note**: The dataset (`parsed_data.pkl`) is not included in this repo for size/privacy reasons.
 
 ---
 
-## 📁 Recommended Directory Structure
+## ⚙️ Installation
 
+Ensure Python 3.10+ is installed. Then run:
 
+```bash
+pip install -r requirements.txt
