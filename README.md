@@ -32,15 +32,16 @@ This project implements a hybrid disease prediction system that combines a Multi
 
 ## 🗃️ Supporting Files and Their Roles
 
-| File                         | Purpose                                                                 |
-|------------------------------|-------------------------------------------------------------------------|
-| `main.py`                    | The main runtime script. Accepts input and outputs predictions.         |
-| `trained_model.pkl`          | Trained Naive Bayes model.                                              |
-| `trained_nn_model.keras`     | Trained Keras neural network model.                                     |
-| `master_symptom_list.pkl`    | List of 645 unique, tokenized symptoms. Used for vector creation.       |
-| `labelencoder.pkl`           | Encodes string class labels to integers during training/inference.      |
-| `label_list.pkl`             | List of original disease names (labels), used to decode predictions.    |
-| `requirements.txt`           | Python dependencies required to run the project.                        |
+| File                                           | Purpose                                                                 |
+|------------------------------------------------|-------------------------------------------------------------------------|
+| `main.py`                                      | The main runtime script. Accepts input and outputs predictions.         |
+| `trained_model.pkl`                            | Trained Naive Bayes model.                                              |
+| `trained_nn_model.keras`                       | Trained Keras neural network model.                                     |
+| `master_symptom_list.pkl`                      | List of 645 unique, tokenized symptoms. Used for vector creation.       |
+| `labelencoder.pkl`                             | Encodes string class labels to integers during training/inference.      |
+| `label_list.pkl`                               | List of original disease names (labels), used to decode predictions.    |
+| `Model Trainer(Both Naive Bayes & Keras)`|     | Trains both models                                                      |
+| `requirements.txt`                             | Python dependencies required to run the project.                        |
 
 ---
 
