@@ -1,27 +1,49 @@
-# DiseasePrediction
-A hybrid disease prediction system using Naive Bayes and Keras-based neural network models. Accepts natural language symptom input and returns Top 3 predicted diseases with confidence scores. Achieved 97.17% and 97.51% accuracy, respectively.
-# 🔬 Disease Prediction System (Naive Bayes + Keras Neural Network)
+# 🩺 Disease Prediction System (Naive Bayes + Keras Neural Network)
 
-This project implements a hybrid disease prediction system that combines a Multinomial Naive Bayes classifier and a Keras-based feedforward neural network. It takes natural language symptom input—including typos and synonyms—and predicts the Top 3 most likely diseases with confidence scores from both models.
+This project implements a hybrid disease prediction system that combines a Multinomial Naive Bayes classifier and a Keras-based feedforward neural network to identify the top 3 most probable diseases based on user-supplied symptoms. The system handles free-text input with potential typographical errors and synonyms, and returns ranked predictions from both models with confidence scores.
+
+---
+
+## 🔍 Key Features
+
+- Accepts natural language symptom input
+- Fuzzy matching and typo handling using sentence embeddings + fallback logic
+- Binary symptom vectorization (645 features)
+- Dual-model prediction (Naive Bayes + Neural Network)
+- Top-3 ranked predictions with class probabilities
+- Robust preprocessing and vector generation
+- Clean CLI-based interaction via `main.py`
+
+---
 
 ## 🧠 Models Used
 
-- **Naive Bayes Classifier**
-  - Accuracy: **97.17%**
-  - Fast and interpretable
+### 1. **Multinomial Naive Bayes**
+- File: `trained_model.pkl`
+- Format: scikit-learn model
+- Description: Probabilistic classifier trained on binary symptom vectors; interpretable and fast.
 
-- **Feedforward Neural Network (Keras)**
-  - Accuracy: **97.51%**
-  - Deep learning-based with dropout and ReLU layers
+### 2. **Feedforward Neural Network (Keras)**
+- File: `trained_nn_model.keras`
+- Format: Keras `.keras` saved model
+- Description: Deep neural network with two hidden layers trained using softmax and categorical crossentropy loss.
 
-## 💡 Key Features
+---
 
-- Accepts free-text symptom input
-- Handles typographical errors and synonyms
-- Predicts Top-3 diseases with confidence
-- Evaluates both models side-by-side
+## 🗃️ Supporting Files and Their Roles
 
-## ⚙️ Requirements
+| File                         | Purpose                                                                 |
+|------------------------------|-------------------------------------------------------------------------|
+| `main.py`                    | The main runtime script. Accepts input and outputs predictions.         |
+| `trained_model.pkl`          | Trained Naive Bayes model.                                              |
+| `trained_nn_model.keras`     | Trained Keras neural network model.                                     |
+| `master_symptom_list.pkl`    | List of 645 unique, tokenized symptoms. Used for vector creation.       |
+| `labelencoder.pkl`           | Encodes string class labels to integers during training/inference.      |
+| `label_list.pkl`             | List of original disease names (labels), used to decode predictions.    |
+| `requirements.txt`           | Python dependencies required to run the project.                        |
 
-```bash
-pip install -r requirements.txt
+---
+
+## 📁 Recommended Directory Structure
+
+
